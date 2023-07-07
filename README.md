@@ -1,1 +1,1 @@
-# NickTestExtension
+# NickSampleExtension
