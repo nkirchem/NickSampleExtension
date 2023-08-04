@@ -4,7 +4,8 @@ import {
     formBuilder,
     ResourceScopeSection,
     TemplateDeploymentScope,
-    FormWizardNavigation,
+    FormAsyncNavigation,
+    // FormWizardNavigation,
     FormNavigationFooter,
     ReviewStep,
     useFormNavigation,
@@ -14,9 +15,11 @@ import { useValidationEffect, ValidationState, ValidationResult } from "@microso
 import { Summary } from "@microsoft/azureportal-reactview/Summary";
 import { TagsByResource } from "@microsoft/azureportal-reactview/TagsByResource";
 import { PrimaryButton } from "@fluentui/react/lib/Button";
+import { ChoiceGroup, IChoiceGroupOption } from "@fluentui/react/lib/ChoiceGroup";
 import { TextField, ITextFieldProps } from "@fluentui/react/lib/TextField";
 import * as React from "react";
 import { FormResources } from "./Resources.resjson";
+import { mergeStyles } from "@fluentui/react";
 
 const CustomFooter = (props: React.PropsWithChildren<{ outputs: Record<string, any>; primaryButtonText: string }>) => {
     const { canMoveNext, navigationDisabled } = useFormNavigation();
@@ -60,8 +63,29 @@ const TextFieldWithValidationHook = (props: ITextFieldProps) => {
     }} />;
 };
 
+interface IFormChoiceGroupProps {
+    options: IChoiceGroupOption[];
+    defaultOptionKey?: string;
+    onChange?: (ev: React.FormEvent, value: string) => void
+}
+
+const FormChoiceGroup = (props: IFormChoiceGroupProps) => {
+    const { defaultOptionKey, onChange, options } = props;
+    const [ selectedKey, setSelectedKey] = React.useState(defaultOptionKey);
+    return <ChoiceGroup options={options} selectedKey={selectedKey} onChange={(ev, option) => {
+        setSelectedKey(option.key);
+        onChange(ev, option.key);
+    }} />;
+};
+
+const yesNoOptions: IChoiceGroupOption[] = [
+    { key: "yes", text: "Yes" },
+    { key: "no", text: "No" },
+];
+
 const Wizard = formBuilder()
-    .add.navigation("allSteps", FormWizardNavigation)
+    .define.prop("isConfidentialDefault", "unknown")
+    .add.navigation("allSteps", FormAsyncNavigation)
 
         .add.step("basics")
             .customize.label.static(FormResources.Basics)
@@ -76,10 +100,22 @@ const Wizard = formBuilder()
                     value => value === FormResources.ValidationErrorLocationName
                         ? { state: ValidationState.Error, message: FormResources.ValidationErrorMessageLocation }
                         : { state: ValidationState.Success })
+
             .seal.step()
 
         .add.step("props")
             .customize.label.static(FormResources.PropsStepTitle)
+
+            .add.input("isConfidential", FormChoiceGroup)
+                .customize.formLabelProps.displayValue.static("Is Confidential?")
+                .customize.props.options.static(yesNoOptions)
+                .customize.props.defaultOptionKey.dynamic(state => state.props.isConfidentialDefault, v => v)
+                .seal.input()
+
+            .add.input("demonstrateChoiceGroupValue", (props: { confidentialValue: string }) => <div>{props.confidentialValue}</div>)
+                .customize.formLabelProps.displayValue.static("Value of isConfidential")
+                .customize.props.confidentialValue.dynamic(state => state.allSteps.props.isConfidential.value, selectedState => selectedState || "")
+                .seal.input()
 
             .add.input("textField", TextField)
                 .customize.formLabelProps.displayValue.static(FormResources.PropsStepTextFieldLabel)
@@ -198,8 +234,22 @@ const Wizard = formBuilder()
     .seal.form();
 
 const WizardSample: React.FC = () => {
-    setTitle(FormResources.WizardSampleTitle);
-    return <Wizard />;
+    setTitle(FormResources.WizardSampleTitle + "4");
+
+    const verticalTabsStyle = mergeStyles({
+        "> div": { display: "flex" },
+        ".ms-Pivot": { display: "flex", flexDirection: "column", marginRight: "20px" },
+        "[role=tablist] > button.is-selected::before": { width: "2px", height: "auto", left: "0px", top: "2px", bottom: "2px", transition: "none" },
+        "[role=tablist] > button": { marginBottom: "4px" },
+        "[role=tablist] > button > span > span": { flexGrow: "1", textAlign: "left" },
+        "[role=tabpanel] > div > div:first-child": { marginTop: "0px" },
+        "[role=tabpanel] > div > div:first-child > :first-child": { marginBottom: "0px" },
+        "[role=tabpanel] > div > div:first-child > div:nth-child(2) > :first-child": { marginBottom: "0px" },
+    });
+
+    return <div className={verticalTabsStyle}>
+        <Wizard isConfidentialDefault="yes" />
+    </div>;
 }
 
 export default WizardSample;
