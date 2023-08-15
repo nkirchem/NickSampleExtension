@@ -3,6 +3,7 @@ const { getReactViewBuild } = require("@microsoft/azureportal-reactview-tools/we
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 const builder = getReactViewBuild();
+builder.enableResJsonSupport();
 builder.enableLazyLoadedBundleCache();
 builder.enableDataFetcher();
 builder.setDevServerConfigPath("../../devServerConfig.json");
