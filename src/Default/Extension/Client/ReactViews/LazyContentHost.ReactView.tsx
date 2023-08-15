@@ -6,10 +6,10 @@ setTitle("Sample Form with FormBuilder");
 
 const LazyContent = React.lazy(() => import("./LazyContent"));
 
-export default () => {
+export const LazyContentHost = () => {
     const [showLazyContent, setShowLazyContent] = React.useState(false);
     return (<div>
-        <div>Static contnet</div>
+        <div>Static content8</div>
         <DefaultButton text={showLazyContent ? "Hide" : "Show"} onClick={() => setShowLazyContent(v => !v)} />
         {showLazyContent && <React.Suspense fallback={<div>Loading...</div>}>
             <LazyContent />
@@ -17,3 +17,5 @@ export default () => {
         }
     </div>);
 };
+
+export default LazyContentHost;
