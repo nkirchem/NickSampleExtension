@@ -49,12 +49,12 @@ const ResourceEssentialsDemo = () => {
                 {
                     label: "Essentials item 1",
                     value: "Sample string",
-                    column: FieldColumn.Left,
+                    column: FieldColumn.Right,
                 },
                 {
                     label: "Essentials item 2",
                     value: <Link href="https://bing.com" target="#">Bing.com</Link>,
-                    column: FieldColumn.Left,
+                    column: FieldColumn.Right,
                 },
                 {
                     label: "Essentials item 3",
