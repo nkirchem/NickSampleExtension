@@ -1,5 +1,6 @@
 
 import { closeCurrentBlade, setTitle } from "@microsoft/azureportal-reactview/Az";
+import { extensionAssignments } from "@microsoft/azureportal-reactview/Experimentation";
 import {
     formBuilder,
     ResourceScopeSection,
@@ -247,7 +248,7 @@ const WizardSample: React.FC = () => {
         "[role=tabpanel] > div > div:first-child > div:nth-child(2) > :first-child": { marginBottom: "0px" },
     });
 
-    return <div className={verticalTabsStyle}>
+    return <div className={extensionAssignments.getBooleanValue("verticalTabs") && verticalTabsStyle}>
         <Wizard isConfidentialDefault="yes" />
     </div>;
 }
