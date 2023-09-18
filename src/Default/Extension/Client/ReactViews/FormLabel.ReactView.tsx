@@ -1,13 +1,14 @@
 import * as Az from "@microsoft/azureportal-reactview/Az";
+import { FormLabel, useFormLabelContext } from "@microsoft/azureportal-reactview/FormLabel";
+import { TextField } from "@fluentui/react";
 import * as React from "react";
 import { Resources } from "./Resources.resjson";
-import { FormLabel, useFormLabelContext } from "@microsoft/azureportal-reactview/FormLabel";
 
 Az.setTitle(Resources.HelloWorldTitle);
 
 export const FormLabelView = () => {
     return <div>
-        <FormLabel displayValue="Form label1" tooltip={"tooltip about label1"}>Form content 1</FormLabel>
+        <FormLabel displayValue="Form label1" tooltip={"tooltip about label1"}><TextField defaultValue="Form field 1" /></FormLabel>
         <FormLabel displayValue="Form label2" tooltip={"tooltip about label2"}><FormContentDisabled /></FormLabel>
     </div>
 };
@@ -15,9 +16,9 @@ export const FormLabelView = () => {
 const FormContentDisabled = () => {
     const { setIsTooltipIconTabbable } = useFormLabelContext();
     React.useEffect(() => {
-        setIsTooltipIconTabbable(false);
+        setIsTooltipIconTabbable(true);
     }, []);
-    return <div>Form content disabled</div>;
+    return <TextField defaultValue="Form field 2" disabled={true} />;
 };
 
 export default FormLabelView;
