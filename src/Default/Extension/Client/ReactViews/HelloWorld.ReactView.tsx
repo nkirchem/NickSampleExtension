@@ -3,7 +3,7 @@ import * as React from "react";
 import { Resources } from "./Resources.resjson";
 import { StatusBarType, dismissStatusBar, showStatusBar } from "@microsoft/azureportal-reactview/StatusBar";
 import { TagsByResource, TargetItem } from "@microsoft/azureportal-reactview/TagsByResource";
-import { DefaultButton, TextField } from "@fluentui/react";
+import { DefaultButton, Pivot, PivotItem, TextField, mergeStyles } from "@fluentui/react";
 import { writeSetting, readSettings } from "@microsoft/azureportal-reactview/PersistentStorage";
 
 Az.setTitle(Resources.HelloWorldTitle);
@@ -29,6 +29,14 @@ export const HelloWorld = () => {
     showStatusBar(StatusBarType.Warning, "Hello world2");
 
     return <div>
+        <Pivot className={mergeStyles({ height: 200 })}>
+            <PivotItem headerText="Overview">
+                <div>Overview content</div>
+            </PivotItem>
+            <PivotItem headerText="Permissions">
+                <div>Tab 1 content</div>
+            </PivotItem>
+        </Pivot>
         <TextField autoAdjustHeight={true} multiline={true} value={resourcesText} onChange={(_, newValue) => setResourcesText(newValue)}  />
         <DefaultButton text="Read setting" onClick={() => {
             readSettings("key1").then((value) => console.log(`Read key1: ${JSON.stringify(value)}`));
