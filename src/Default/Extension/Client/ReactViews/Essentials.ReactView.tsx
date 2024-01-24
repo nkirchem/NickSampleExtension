@@ -12,7 +12,6 @@ Az.setTitle("Essentials demo");
  * This blade is a sample using the Portal's Essentials component.
  */
 const ResourceEssentialsDemo = () => {
-    const initialized  = ReactView.useInitialized("ResourceEssentialsDemo");
     const [resourceId, setResourceId] = React.useState("");
 
     React.useEffect(() => {
@@ -32,13 +31,17 @@ const ResourceEssentialsDemo = () => {
                     setResourceId(id);
                 }
             }
-
-            // Calling the initialized hook signals that this component is ready and done participating in the `viewReady` (BladeFullReady telemetry action)
-            initialized();
         });
     }, []);
 
     return (
+        <div>
+            <div>
+                <Link onClick={() => {
+                    Az.openContextPane({ extensionName: "NickSampleExtension", bladeName: "Essentials.ReactView" });
+                }}>Open in new context blade...</Link>
+            </div>
+            <div>
         <Essentials
             fields={[
                 {
@@ -83,7 +86,9 @@ const ResourceEssentialsDemo = () => {
                 return customizedFields;
             }}
         />
+        </div>
+        </div>
     );
 };
 
-export default ResourceEssentialsDemo;
+export default ReactView.withContextPaneWidth(ResourceEssentialsDemo, ReactView.ContextPaneWidth.Medium);
