@@ -1,4 +1,4 @@
-{
+﻿{
   "compileOnSave": true,
   "compilerOptions": {
     "alwaysStrict": true,
@@ -14,7 +14,7 @@
     "noEmitHelpers": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "outDir": "Output/Content/Scripts",
+    "outDir": "BuildCache/Output/Content/Scripts",
     "paths": {
       "*": [
         "*"
@@ -37,6 +37,6 @@
     "Definitions/**/*"
   ],
   "exclude": [
-      "Client/ReactViews/**/*"
+    "Client/ReactViews/**/*"
   ]
 }

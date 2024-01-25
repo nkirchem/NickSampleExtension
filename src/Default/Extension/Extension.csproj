@@ -1,5 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!--New SDK V2 settings-->
+    <ExtensionBuildType>knockout</ExtensionBuildType>
+    <CacheKnockoutBuildOutput>true</CacheKnockoutBuildOutput>
+  </PropertyGroup>
   <PropertyGroup>
     <!-- ensure dotnet build does not traverse the node_modules directories -->
     <DefaultItemExcludes>node_modules\**;Client\ReactViews\node_modules\**;$(DefaultItemExcludes)</DefaultItemExcludes>
@@ -14,7 +19,6 @@
     <AssemblyName>Microsoft.Portal.Extensions.ExtensionTemplate</AssemblyName>
     <OutputPath>bin\</OutputPath>
     <!-- $(ExtensionPageVersion) below specifies the version of the extension. Ensure that the value is different with each official build. -->
-    <ExtensionPageVersion>1.0.0.0</ExtensionPageVersion>
     <PortalEmitTypeMetadataTypeScript>true</PortalEmitTypeMetadataTypeScript>
     <PortalEmitTypeMetadataTypeScriptTargetFolder>Client\_generated</PortalEmitTypeMetadataTypeScriptTargetFolder>
     <EnableFastExtensionLoad>true</EnableFastExtensionLoad>
@@ -58,8 +62,8 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Gallery.AzureGalleryUtility" Version="[13.1.215442]" />
-    <PackageReference Include="Microsoft.Portal.Extensions.Hubs" Version="[12.3.0.1]" GeneratePathProperty="true" />
-    <PackageReference Include="Microsoft.Portal.Tools" Version="[12.3.0.1]" GeneratePathProperty="true" />
+    <PackageReference Include="Microsoft.Portal.Extensions.Hubs" Version="[13.130.0.1]" GeneratePathProperty="true" />
+    <PackageReference Include="Microsoft.Portal.Tools" Version="[13.130.0.1]" GeneratePathProperty="true" />
     <PackageReference Include="Microsoft.Portal.Extensions.AAD" Version="[1.0.0.651]" GeneratePathProperty="true" />
   </ItemGroup>
   <ItemGroup>
@@ -67,7 +71,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="tsconfig.json" />
-    <Content Include="Client\ReactViews\tsconfig.json" />
+    <ReactTSConfig Include="Client\ReactViews\tsconfig.json" />
     <None Include="Client\TypeReferences.d.ts" />
     <None Include="Client\Views\ResourceKeysBlade.ts" />
     <None Include="Client\ReactViews\Test.ReactView.tsx" />
@@ -101,14 +105,4 @@
     <None Include="GalleryPackages\Create\UIDefinition.json" />
     <None Include="Definitions\*.d.ts" />
   </ItemGroup>
-   <Target Name="ReactViewBuild" BeforeTargets="GenerateContentPackage" AfterTargets="CompileTypescriptWithTSConfig">
-    <Exec
-      WorkingDirectory="$(MSBuildThisFileDirectory)/Client/ReactViews"
-      Condition="'$(Configuration)' == 'Debug'"
-      Command="npm run build:dev" />
-    <Exec
-      WorkingDirectory="$(MSBuildThisFileDirectory)/Client/ReactViews"
-      Condition="'$(Configuration)' != 'Debug'"
-      Command="npm run build" />
-  </Target>
 </Project>

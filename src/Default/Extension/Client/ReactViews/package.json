@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "templateextension-reactviews",
   "version": "1.0.0",
   "description": "Template Extension React Views",
@@ -14,12 +14,17 @@
   "scripts": {
     "test": "jest --config ./test-config/jest.config.js",
     "watchtest": "jest --config ./test-config/jest.config.js --watch",
-    "analyze": "reactview-build --analyze",
-    "build": "reactview-build",
-    "build:dev": "reactview-build --development"
+    "analyze": "extension-build --analyze",
+    "build": "extension-build",
+    "build:dev": "extension-build --development",
+    "build-hybrid": "extension-build-hybrid",
+    "build-hybrid:dev": "extension-build-hybrid --development",
+    "serve": "extension-serve",
+    "start": "extension-start",
+    "start-hybrid": "extension-start-hybrid"
   },
   "devDependencies": {
-    "@microsoft/azureportal-reactview-tools": "1.3.0",
+    "@microsoft/azureportal-build": "^13.130.0",
     "@testing-library/react": "11.0.4",
     "@types/jest": "26.0.12",
     "@types/react": "^17.0.53",

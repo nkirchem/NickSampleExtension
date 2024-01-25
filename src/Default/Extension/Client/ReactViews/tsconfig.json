@@ -1,6 +1,6 @@
-{
+﻿{
   "compileOnSave": true,
-  "extends": "./node_modules/@microsoft/azureportal-reactview-tools/tsconfig.webpack.json",
+  "extends": "./node_modules/@microsoft/azureportal-build/tsconfig.webpack.json",
   "compilerOptions": {
     "allowJs": true,
     "baseUrl": ".",
@@ -13,11 +13,12 @@
     },
     "types": [
       "jest",
-      "./node_modules/@microsoft/azureportal-reactview-tools/imageTypings"
+      "./node_modules/@microsoft/azureportal-build/imageTypings"
     ]
   },
   "include": [
-    "**/*"
+    "**/*",
+    "../_generated/ForReact/**/*"
   ],
   "exclude": [
     "./reactbuild.config.js",

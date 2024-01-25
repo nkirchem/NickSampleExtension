@@ -1,0 +1,14 @@
+{
+  "$schema": "./Client/ReactViews/node_modules/@microsoft/azureportal-build/lib/definitions/extension.config.schema.json",
+  "name": "NickSampleExtension",
+  "hostingServiceName": "nicksampleextension",
+  "version": "1.0.0.0",
+  "sourceDirectory": "./Client/ReactViews",
+  "outputDirectory": "./Output",
+  "hasKnockoutContent": true,
+  "devServerConfig": {
+    "port": 1339,
+    "sideLoadTarget": "https://portal.azure.com/#view/NickSampleExtension/HelloWorld.ReactView"
+  },
+  "preview": false
+}

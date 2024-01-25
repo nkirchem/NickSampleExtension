@@ -1,3 +1,9 @@
-Output/*
+﻿Output/*
 Client/_generated/*
 App_Data/Gallery/*.azpkg
+
+!BuildCache/**
+BuildCache/**/VersionCheck*.*
+*.tsbuildinfo
+extension.config.local.json
+extension.config.local.js
