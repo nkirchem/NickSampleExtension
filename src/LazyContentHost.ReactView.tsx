@@ -11,7 +11,7 @@ export const LazyContentHost = () => {
     return (<div>
         <div>Static content</div>
         <DefaultButton text={showLazyContent ? "Hide" : "Show"} onClick={() => setShowLazyContent(v => !v)} />
-        {showLazyContent && <React.Suspense fallback={<div>Loading...</div>}>
+        {showLazyContent && <React.Suspense fallback={<></>}>
             <LazyContent />
         </React.Suspense>
         }

@@ -1,9 +1,9 @@
-export enum Resources {
-    HelloWorldMessage = "Hello World!",
+export const enum Resources {
+    HelloWorldMessage = "Just saying \"Hi\"\nto the world...",
     HelloWorldTitle = "Hello World Title"
 }
 
-export enum FormResources {
+export const enum FormResources {
     Basics = "Basics",
     ButtonOutputs = "Return Outputs",
     LabelParam = "Sample Label",

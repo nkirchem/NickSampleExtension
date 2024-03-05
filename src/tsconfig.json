@@ -4,6 +4,7 @@
   "compilerOptions": {
     "allowJs": true,
     "baseUrl": ".",
+    "isolatedModules": false,
     "module": "ES2020",
     "paths": {
       "*": [

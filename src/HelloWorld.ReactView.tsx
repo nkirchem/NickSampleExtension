@@ -8,6 +8,7 @@ import { FilterableDropdown } from "@microsoft/azureportal-reactview/FilterableD
 import { writeSetting, readSettings } from "@microsoft/azureportal-reactview/PersistentStorage";
 import { getEnvironmentValue } from "@microsoft/azureportal-reactview/Environment";
 import { FormLabel, useFormLabelContext } from "@microsoft/azureportal-reactview/FormLabel";
+import { useAsync } from "@microsoft/azureportal-reactview/DataManagement";
 
 Az.setTitle(AllResources.Resources.HelloWorldTitle);
 
@@ -48,6 +49,8 @@ export const HelloWorld = () => {
         return items;
     }, []);
 
+    const sessionId = useAsync(() => Az.getSessionId(), []).result;
+
     const updateCheckedItems = (items: string[]) => {
         setCheckedItems(items.length === dropdownOptions.length ? items.concat("::SelectAll::") : items);
     }
@@ -55,6 +58,7 @@ export const HelloWorld = () => {
     return <div>
         <Pivot className={mergeStyles({ height: 250 })}>
             <PivotItem headerText="Overview">
+                <div>Session id {sessionId}</div>
                 <div>Overview content</div>
                 <div>Dependencies:</div>
                 <pre>{JSON.stringify(getEnvironmentValue("dependencyVersions"))}</pre>
