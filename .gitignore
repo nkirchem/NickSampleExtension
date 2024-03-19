@@ -1,4 +1,5 @@
 src/coverage/*
 out
+.vs
 
 node_modules

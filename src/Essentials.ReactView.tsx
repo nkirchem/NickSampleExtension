@@ -5,6 +5,7 @@ import { FieldColumn, Essentials, ResourceField, Field, CustomResourceField } fr
 import { Link } from "@fluentui/react/lib/Link";
 import { BladeLink } from "@microsoft/azureportal-reactview/BladeLink";
 import { batch } from "@microsoft/azureportal-reactview/Ajax";
+import { Ajax } from "@microsoft/azureportal-reactview/FxReactCommon.Modules";
 
 Az.setTitle("Essentials demo");
 
@@ -23,7 +24,7 @@ const ResourceEssentialsDemo = () => {
                 query: "take 1 | project id",
                 options: { resultFormat: "table", $skip: 0, $top: 1, $skipToken: "" },
             },
-        }).then((response: Common.Ajax.BatchResponseItem<{ data: { columns: any[]; rows: any[] } }>) => {
+        }).then((response: Ajax.BatchResponseItem<{ data: { columns: any[]; rows: any[] } }>) => {
             if (response.httpStatusCode === 200 && response.content) {
                 const data = response.content.data;
                 if (data) {

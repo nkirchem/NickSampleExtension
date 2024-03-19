@@ -8,7 +8,7 @@
       "@fluentui/react": "8.103.5",
       "@fluentui/react-components": "^9.46.4",
       "@fluentui/react-icons": "^2.0.226",
-      "@microsoft/azureportal-reactview": "^1.113.0",
+      "@microsoft/azureportal-reactview": "13.236.0",
       "react": "17.0.2",
       "react-dom": "17.0.2",
       "react-monaco-editor": "^0.54.0"
@@ -23,7 +23,7 @@
       "start": "extension-start"
     },
     "devDependencies": {
-      "@microsoft/azureportal-build": "^13.130.0",
+      "@microsoft/azureportal-build": "13.236.0",
       "@testing-library/react": "11.0.4",
       "@types/jest": "26.0.12",
       "@types/react": "^17.0.53",
