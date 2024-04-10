@@ -23,6 +23,9 @@
       "start": "extension-start"
     },
     "devDependencies": {
+      "@fluentui/react-icons-font-subsetting-webpack-plugin": "^2.0.233",
+      "@babel/preset-typescript": "^7.23.3",
+      "@griffel/webpack-loader": "^2.2.9",
       "@microsoft/azureportal-build": "13.236.0",
       "@testing-library/react": "11.0.4",
       "@types/jest": "26.0.12",

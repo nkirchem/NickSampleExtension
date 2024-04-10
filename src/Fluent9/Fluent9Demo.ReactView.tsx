@@ -1,6 +1,6 @@
 import * as React from "react";
 import { setTitle } from "@microsoft/azureportal-reactview/Az";
-import { FluentProvider, webLightTheme, makeStyles, tokens } from '@fluentui/react-components';
+import { BladeLink } from "@microsoft/azureportal-reactview/BladeLink";
 import {
   FolderRegular,
   EditRegular,
@@ -24,10 +24,10 @@ import {
   createTableColumn,
 } from "@fluentui/react-components";
 import {
-    FontIncrease24Regular,
-    FontDecrease24Regular,
-    TextFont24Regular,
-    MoreHorizontal24Filled,
+    FontIncreaseRegular,
+    FontDecreaseRegular,
+    TextFontRegular,
+    MoreHorizontalFilled,
 } from "@fluentui/react-icons";
 import {
     Toolbar,
@@ -59,7 +59,6 @@ import {
   import {
     Body1,
     Caption1,
-    shorthands,
   } from "@fluentui/react-components";
   import { ArrowReplyRegular, ShareRegular } from "@fluentui/react-icons";
   import {
@@ -127,14 +126,6 @@ export const FieldSample = (props: Partial<FieldProps>) => (
   
     return `${ASSET_URL}${asset}`;
   };
-  
-  const useCardStyles = makeStyles({
-    card: {
-      ...shorthands.margin("auto"),
-      width: "720px",
-      maxWidth: "100%",
-    },
-  });
   
   export const CardSample = () => {
     const styles = useCardStyles();
@@ -238,23 +229,26 @@ export const FieldSample = (props: Partial<FieldProps>) => (
   };
 
 import type { ToolbarProps } from "@fluentui/react-components";
-  
-export const ToolbarExample = (props: Partial<ToolbarProps>) => (
+import { useCardStyles, useStyles, useToolbarStyles } from "./Fluent9Demo.styles";
+
+export const ToolbarExample = (props: Partial<ToolbarProps>) => {
+  const styles = useToolbarStyles();
+  return (
     <Toolbar aria-label="Default" {...props}>
         <ToolbarButton
         aria-label="Increase Font Size"
         appearance="primary"
-        icon={<FontIncrease24Regular />}
+        icon={<FontIncreaseRegular className={styles.icon} />}
         />
         <ToolbarButton
         aria-label="Decrease Font Size"
-        icon={<FontDecrease24Regular />}
+        icon={<FontDecreaseRegular />}
         />
-        <ToolbarButton aria-label="Reset Font Size" icon={<TextFont24Regular />} />
+        <ToolbarButton aria-label="Reset Font Size" icon={<TextFontRegular />} />
         <ToolbarDivider />
         <Menu>
         <MenuTrigger>
-            <ToolbarButton aria-label="More" icon={<MoreHorizontal24Filled />} />
+            <ToolbarButton aria-label="More" icon={<MoreHorizontalFilled />} />
         </MenuTrigger>
 
         <MenuPopover>
@@ -268,6 +262,7 @@ export const ToolbarExample = (props: Partial<ToolbarProps>) => (
         </Menu>
     </Toolbar>
 );
+  }
 
 type FileCell = {
   label: string;
@@ -446,16 +441,12 @@ const Example = () => {
   );
 };
 
-const useStyles = makeStyles({
-    root: { color: tokens.colorNeutralForeground3 },
-});
-
 setTitle("Fluent 9 smorgasbord");
 
 export const Fluent9Demo = () => {
     const styles = useStyles();
-    return <FluentProvider theme={webLightTheme}>
-        <div className={styles.root}>
+    return <div className={styles.root}>
+            <div><BladeLink bladeReference={{ bladeName: "HelloWorld.ReactView", extensionName: "NickSampleExtension" }}>Navigate to HelloWorld.ReactView</BladeLink></div>
             <MessageBarSample />
             <ToolbarExample />
             <div><AvatarGroupSample /></div>
@@ -465,7 +456,6 @@ export const Fluent9Demo = () => {
             <div><SkeletonSample /></div>
             <Example />
         </div>
-    </FluentProvider>
 };
 
 export default Fluent9Demo;

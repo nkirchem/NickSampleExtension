@@ -9,6 +9,7 @@ import { writeSetting, readSettings } from "@microsoft/azureportal-reactview/Per
 import { getEnvironmentValue } from "@microsoft/azureportal-reactview/Environment";
 import { FormLabel, useFormLabelContext } from "@microsoft/azureportal-reactview/FormLabel";
 import { useAsync } from "@microsoft/azureportal-reactview/DataManagement";
+import { BladeLink } from "@microsoft/azureportal-reactview/BladeLink";
 
 Az.setTitle(AllResources.Resources.HelloWorldTitle);
 
@@ -56,6 +57,7 @@ export const HelloWorld = () => {
     }
 
     return <div>
+        <div><BladeLink bladeReference={{ bladeName: "Fluent9Demo.ReactView", extensionName: "NickSampleExtension" }}>Navigate to Fluent9Demo.ReactView</BladeLink></div>
         <Pivot className={mergeStyles({ height: 250 })}>
             <PivotItem headerText="Overview">
                 <div>Session id {sessionId}</div>
