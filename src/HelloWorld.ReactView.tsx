@@ -65,6 +65,11 @@ export const HelloWorld = () => {
                 <div>Dependencies:</div>
                 <pre>{JSON.stringify(getEnvironmentValue("dependencyVersions"))}</pre>
                 <div>
+                    <FormLabel displayValue={"Text field with placeholder"}>
+                        <TextField placeholder="Placeholder text" styles={{ field: { "::placeholder": { fontStyle: "normal !important" } } }} />
+                    </FormLabel>
+                </div>
+                <div>
                     <FormLabel displayValue={"Form label for choice group"}>
                         <FormLabelChoiceGroup
                             options={[{

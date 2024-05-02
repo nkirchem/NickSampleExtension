@@ -12,8 +12,12 @@
   },
   "build": {
     "devToolDevelopment": "eval",
+    "versionedLibraries": {
+      "react": 17
+    },
     "fluent": {
-      "externalizeFluent9": true
+      "externalizeFluent9": true,
+      "allowedVersions": "fluent1And2"
     },
     "performance": {
       "typeCheckingParallelization": true
