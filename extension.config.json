@@ -1,0 +1,30 @@
+{
+  "$schema": "./src/node_modules/@microsoft/azureportal-build/lib/definitions/extension.config.schema.json",
+  "name": "NickSampleExtension",
+  "version": "1.0.1",
+  "sourceDirectory": "./src",
+  "devServer": {
+    "port": 1340,
+    "sideLoadTarget": {
+      "baseUrl": "https://localhost:55555/Portal",
+      "view": "Fluent9Demo.ReactView"
+    }
+  },
+  "build": {
+    "devToolDevelopment": "eval",
+    "versionedLibraries": {
+      "react": 17
+    },
+    "fluent": {
+      "externalizeFluent9": true,
+      "allowedVersions": "fluent1And2"
+    },
+    "performance": {
+      "typeCheckingParallelization": true
+    },
+    "resJson": {
+      "optimizeRuntimePerformance": true,
+      "localizeDebugContent": false
+    }
+  }
+}
