@@ -3,13 +3,14 @@ import * as React from "react";
 import * as AllResources from "./Resources.resjson";
 // import { StatusBarType, dismissStatusBar, showStatusBar } from "@microsoft/azureportal-reactview/StatusBar";
 import { TagsByResource, TargetItem } from "@microsoft/azureportal-reactview/TagsByResource";
-import { ChoiceGroup, IChoiceGroupProps, DefaultButton, Pivot, PivotItem, TextField, mergeStyles } from "@fluentui/react";
+import { ChoiceGroup, IChoiceGroupProps, DefaultButton, Pivot, PivotItem, TextField, mergeStyles, getTheme, Link } from "@fluentui/react";
 import { FilterableDropdown } from "@microsoft/azureportal-reactview/FilterableDropdown";
 import { writeSetting, readSettings } from "@microsoft/azureportal-reactview/PersistentStorage";
 import { getEnvironmentValue } from "@microsoft/azureportal-reactview/Environment";
 import { FormLabel, useFormLabelContext } from "@microsoft/azureportal-reactview/FormLabel";
 import { useAsync } from "@microsoft/azureportal-reactview/DataManagement";
 import { BladeLink } from "@microsoft/azureportal-reactview/BladeLink";
+import { FrameworkIcon } from "@microsoft/azureportal-reactview/FrameworkIcon";
 
 Az.setTitle(AllResources.Resources.HelloWorldTitle);
 
@@ -58,6 +59,7 @@ export const HelloWorld = () => {
 
     return <div>
         <div><BladeLink bladeReference={{ bladeName: "Fluent9Demo.ReactView", extensionName: "NickSampleExtension" }}>Navigate to Fluent9Demo.ReactView</BladeLink></div>
+        <div><BladeLink bladeReference={{ bladeName: "SubscriptionListView.ReactView", extensionName: "NickSampleExtension" }}>Navigate to SubscriptionListView.ReactView</BladeLink></div>
         <Pivot className={mergeStyles({ height: 250 })}>
             <PivotItem headerText="Overview">
                 <div>Session id {sessionId}</div>
@@ -127,6 +129,28 @@ export const HelloWorld = () => {
         <p>Current resources: {JSON.stringify(resources)}</p>
         <p>Tags by resource:</p>
         <TagsByResource resources={resources} onTaggedResourcesChange={(value) => console.log(`Resources changed: ${JSON.stringify(value)}`) } />
+        <div style={{ width: "300px", position: "relative" }}>
+            <div><Link underline>Linked item</Link></div>
+            <div>Item with a potential favorite button ...</div>
+                <button
+                    className="reactview-hovercard-setfavoritebutton"
+                    onClick={() => {
+                        console.log(`Click: ${new Date()}`);
+                    }}
+                    style={{
+                        background: "none",
+                        border: "none",
+                        margin: "0 0 auto auto",
+                        float: "right",
+                        cursor: "pointer",
+                    }}
+                >
+                    <FrameworkIcon
+                        image={{ type: Az.IconType.Star }}
+                        style={{ fill: getTheme().semanticColors.link, width: "14px", height: "14px" }}
+                    ></FrameworkIcon>
+                </button>
+        </div>
     </div>
 };
 

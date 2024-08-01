@@ -13,7 +13,7 @@
   "build": {
     "devToolDevelopment": "eval",
     "versionedLibraries": {
-      "react": 17
+      "react": 18
     },
     "fluent": {
       "externalizeFluent9": true,
@@ -25,6 +25,37 @@
     "resJson": {
       "optimizeRuntimePerformance": true,
       "localizeDebugContent": false
+    }
+  },
+  "environment": {
+    "deepmergeProperties": ["features"],
+    "*": {
+      "enablePortalLogging": true,
+      "armApiVersion": "2014-04-01",
+      "reflowReadyDefault": true,
+      "trustedDomains": [],
+      "argbrowseoptions": {
+        "MyResource": "Force"
+      }
+    },
+    "df.onecloud.azure-test.net": {},
+    "onestb.cloudapp.net": {},
+    "portal.azure.cn": {},
+    "portal.azure.com": {
+      "features": {
+        "regionSegments": true
+      }
+    },
+    "portal.azure.us": {},
+    "ms.portal.azure.com": {
+      "features": {
+        "feature1": "true",
+        "feature2": "true"
+      }
+    },
+    "localhost#55555": {
+      "armEndpoint": "https://management.azure.com",
+      "trustedDomains": ["localhost"]
     }
   }
 }
