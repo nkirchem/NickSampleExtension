@@ -2,7 +2,7 @@ import { Selection, SelectionMode, ShimmeredDetailsList, mergeStyles } from "@fl
 import * as React from "react";
 import { ResourceGroupDropdown } from "./ResourceGroupDropdown";
 import { resourceListViewConnector } from "../ResourceListView.Context";
-import { Resource } from "../../../api/queries/resourceQueries";
+import { Resource } from "../../../Api/queries/resourceQueries";
 
 export const ResourceList = resourceListViewConnector.connect(
   (ctx) => ({

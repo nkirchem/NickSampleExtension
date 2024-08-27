@@ -1,4 +1,4 @@
-import { subscriptionsQuery } from "../../api/queries/subscriptionQueries";
+import { subscriptionsQuery } from "../../Api/queries/subscriptionQueries";
 
 export function fetchData() {
     subscriptionsQuery.bind().get();

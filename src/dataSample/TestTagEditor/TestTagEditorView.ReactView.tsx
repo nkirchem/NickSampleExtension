@@ -2,7 +2,7 @@ import * as React from "react";
 import { setTitle } from "@microsoft/azureportal-reactview/Az";
 import { withContextPaneWidth, ContextPaneWidth } from "@microsoft/azureportal-reactview/ReactView";
 import { DefaultButton, TextField, mergeStyles } from "@fluentui/react";
-import { useUpdateResourceTagOperation } from "../../api/hooks/resourceHooks";
+import { useUpdateResourceTagOperation } from "../../Api/hooks/resourceHooks";
 
 setTitle("Edit test tag");
 

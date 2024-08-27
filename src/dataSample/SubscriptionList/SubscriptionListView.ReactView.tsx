@@ -1,6 +1,6 @@
 import { setTitle } from "@microsoft/azureportal-reactview/Az";
 import * as React from "react";
-import { useSubscriptions } from "../../api/hooks/subscriptionHooks";
+import { useSubscriptions } from "../../Api/hooks/subscriptionHooks";
 import { SubscriptionList } from "./Components/SubscriptionList";
 import { SubscriptionCommandBar } from "./Components/SubscriptionCommandBar";
 

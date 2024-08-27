@@ -6,7 +6,7 @@
   "devServer": {
     "port": 1340,
     "sideLoadTarget": {
-      "baseUrl": "https://localhost:55555/Portal",
+      "__baseUrl": "https://localhost:55555/Portal",
       "view": "Fluent9Demo.ReactView"
     }
   },

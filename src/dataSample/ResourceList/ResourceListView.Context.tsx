@@ -2,10 +2,10 @@ import * as React from "react";
 import { Subscription } from "@microsoft/azureportal-reactview/Az";
 import { ResourceGroup } from "@microsoft/azureportal-reactview/ResourceManagement";
 import { createComponentConnector, usePropertyBag } from "@microsoft/azureportal-reactview/DataManagement";
-import { useResourcesByResourceGroup, useUpdateResourceTagOperation } from "../../api/hooks/resourceHooks";
-import { useSubscription } from "../../api/hooks/subscriptionHooks";
-import { Resource } from "../../api/queries/resourceQueries";
-import { useResourceGroups } from "../../api/hooks/resourceGroupHooks";
+import { useResourcesByResourceGroup, useUpdateResourceTagOperation } from "../../Api/hooks/resourceHooks";
+import { useSubscription } from "../../Api/hooks/subscriptionHooks";
+import { Resource } from "../../Api/queries/resourceQueries";
+import { useResourceGroups } from "../../Api/hooks/resourceGroupHooks";
 
 export type IResourceListViewContext = {
     resources: ReturnType<typeof useResourcesByResourceGroup>;

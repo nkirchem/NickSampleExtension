@@ -1,7 +1,7 @@
 import { IResourceListViewProps } from "./ResourceListView.types";
-import { subscriptionQuery } from "../../api/queries/subscriptionQueries";
-import { resourceGroupsQuery } from "../../api/queries/resourceGroupQueries";
-import { resourcesByResourceGroupQuery } from "../../api/queries/resourceQueries";
+import { subscriptionQuery } from "../../Api/queries/subscriptionQueries";
+import { resourceGroupsQuery } from "../../Api/queries/resourceGroupQueries";
+import { resourcesByResourceGroupQuery } from "../../Api/queries/resourceQueries";
 
 export function fetchData(props: IResourceListViewProps) {
     const subscriptionId = props.parameters.subscriptionId;
