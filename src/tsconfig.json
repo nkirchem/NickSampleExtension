@@ -1,6 +1,6 @@
 ﻿{
   "compileOnSave": true,
-  "extends": "./node_modules/@microsoft/azureportal-build/tsconfig.webpack.json",
+  "extends": "@microsoft/azureportal-build/tsconfig.webpack.json",
   "compilerOptions": {
     "allowJs": true,
     "baseUrl": ".",

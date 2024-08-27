@@ -1,11 +1,14 @@
 import * as React from "react";
 import { ContextPaneWidth, withContextPaneWidth } from "@microsoft/azureportal-reactview/ReactView";
-import { Link } from "@fluentui/react";
+import { Dropdown, Link } from "@fluentui/react";
 
 const ContextPane2: React.FC = () => {
     return <div>
         <Link href="https://www.microsoft.com" target="_blank">Focusable link1</Link>
         <Link href="https://www.microsoft.com" target="_blank">Focusable link2</Link>
+        <div>
+            <Dropdown options={[{ key: "item1", text: "Dropdown item number one" }]} placeholder="Drop1" />
+        </div>
     </div>
 };
 
