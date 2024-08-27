@@ -26,7 +26,7 @@
       "@fluentui/react-icons-font-subsetting-webpack-plugin": "^2.0.233",
       "@babel/preset-typescript": "^7.23.3",
       "@griffel/webpack-loader": "^2.2.9",
-      "@microsoft/azureportal-build": "14.96.0",
+      "@microsoft/azureportal-build": "14.130.0",
       "@testing-library/react": "11.0.4",
       "@types/jest": "26.0.12",
       "@types/react": "^17.0.53",
